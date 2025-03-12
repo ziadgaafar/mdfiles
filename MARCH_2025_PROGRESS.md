@@ -23,7 +23,8 @@ flowchart TB
     ResendOTP --> VerifyOTP
 
     VerifyOTP -->|Yes| SetPassword[Create Password]
-    SetPassword --> RequiredSteps[Complete Required Steps]
+    SetPassword --> PartnerType[Select Partner Type]
+    PartnerType --> RequiredSteps[Complete Required Steps]
 
     subgraph "Required Registration Steps"
     RequiredSteps --> HotelInfo[Hotel Information 'example']
@@ -69,7 +70,7 @@ flowchart TB
 
 #### Registration Process Enhancement
 
-- Developed two-step registration form
+- Developed multi-step registration form
 - Implemented registration state persistence
 - Created dynamic step management system
 - Added route protection for registration process
@@ -119,10 +120,17 @@ flowchart TB
 - Created secure mobile verification with OTP
 - Developed protected routes system
 
+### Partner Type Registration Flow
+
+- Implemented dynamic partner type selection
+- Added partner-specific registration steps
+- Enhanced UI for initial partner selection
+- Improved state persistence and form handling
+
 ## 🎯 Key Achievements
 
 1. Completed end-to-end registration flow implementation
 2. Enhanced security with multi-factor verification
-3. Improved user experience with animated progress indicators
+3. Improved user experience with dynamic steps and partner selection
 4. Optimized state management and context usage
 5. Implemented comprehensive route protection
