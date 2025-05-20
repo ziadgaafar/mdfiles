@@ -1,13 +1,6 @@
 
 # 🚀 Project Abaq: Technical Architecture Rationale
 
-**To:** Project Manager  
-**From:** Lead Developer  
-**Date:** May 20, 2025  
-**Subject:** Justification for Core Technical Decisions  
-
----
-
 ## 🎯 Introduction: Building a Future-Proof LMS
 
 This document outlines the key technical decisions made for Project Abaq, our Learning Management System. The choices of **React with Next.js**, a **Monorepo architecture powered by Turborepo**, and a **multi-app structure** were made strategically to ensure scalability, maintainability, developer efficiency, and a superior user experience.
