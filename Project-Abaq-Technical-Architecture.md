@@ -124,13 +124,13 @@ graph TD
 
 ```mermaid
 graph LR
-    User[User Browser] -->|Accesses abaq.com| StudentApp[abaq.com - Student App]
-    User -->|Accesses teacher.abaq.com| TeacherApp[teacher.abaq.com - Teacher App]
-    User -->|Accesses admin.abaq.com| AdminApp[admin.abaq.com - Admin App]
+    User[User Browser] -->|Accesses abaq.com| StudentApp(abaq.com - Student App)
+    User -->|Accesses teacher.abaq.com| TeacherApp(teacher.abaq.com - Teacher App)
+    User -->|Accesses admin.abaq.com| AdminApp(admin.abaq.com - Admin App)
 
     subgraph "Authentication & Authorization"
         direction LR
-        AuthApp[auth.abaq.com - Auth App]
+        AuthApp(auth.abaq.com - Auth App)
         APIService[Backend API Service]
     end
 
@@ -140,7 +140,7 @@ graph LR
 
     AuthApp -->|1. Login/Signup Request| APIService
     APIService -->|2. Issues Token + Role| AuthApp
-    AuthApp -->|3. Sets Session (Cookie .abaq.com)| User
+    AuthApp -->|3. Sets Cookie for .abaq.com| User
     User -->|4. Redirected to Role-Specific App| StudentApp
     User -->|4. Redirected to Role-Specific App| TeacherApp
     User -->|4. Redirected to Role-Specific App| AdminApp
@@ -148,6 +148,13 @@ graph LR
     StudentApp -->|Authenticated API Calls (with Token)| APIService
     TeacherApp -->|Authenticated API Calls (with Token)| APIService
     AdminApp -->|Authenticated API Calls (with Token)| APIService
+
+    style User fill:#f9f,stroke:#333,stroke-width:2px,color:#000
+    style AuthApp fill:#bbf,stroke:#333,stroke-width:2px,color:#000
+    style StudentApp fill:#9f9,stroke:#333,stroke-width:2px,color:#000
+    style TeacherApp fill:#9ff,stroke:#333,stroke-width:2px,color:#000
+    style AdminApp fill:#ff9,stroke:#333,stroke-width:2px,color:#000
+    style APIService fill:#ddd,stroke:#333,stroke-width:2px,color:#000
 ```
 
 ---
