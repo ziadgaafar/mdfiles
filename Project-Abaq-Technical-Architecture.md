@@ -73,23 +73,34 @@ Our goal is to build a robust platform that caters effectively to **students, te
 
 ```mermaid
 graph TD
-    A[Monorepo (Turborepo)] --> B(apps)
-    A --> C(packages)
-    B --> B1[student-app]
-    B --> B2[teacher-app]
-    B --> B3[admin-app]
-    B --> B4[auth-app]
-    C --> C1[ui-components]
-    C --> C2[shared-hooks]
-    C --> C3[localization-middleware]
-    C --> C4[api-client]
-    C --> C5[eslint-config-custom]
-    C --> C6[tsconfig-custom]
+    A["Monorepo (Turborepo)"] --> B["apps"]
+    A --> C["packages"]
+    B --> B1["student-app"]
+    B --> B2["teacher-app"]
+    B --> B3["admin-app"]
+    B --> B4["auth-app"]
+    C --> C1["ui-components"]
+    C --> C2["shared-hooks"]
+    C --> C3["localization-middleware"]
+    C --> C4["api-client"]
+    C --> C5["eslint-config-custom"]
+    C --> C6["tsconfig-custom"]
 
-    subgraph Shared Code
+    subgraph "Shared Code"
         direction LR
-        C1 & C2 & C3 & C4 & C5 & C6
+        C1; C2; C3; C4; C5; C6;
     end
+
+    C1 --> B1; C1 --> B2; C1 --> B3; C1 --> B4;
+    C2 --> B1; C2 --> B2; C3 --> B3; C2 --> B4;
+    C3 --> B1; C3 --> B2; C3 --> B3; C3 --> B4;
+    C4 --> B1; C4 --> B2; C4 --> B3; C4 --> B4;
+    C5 -.-> B1; C5 -.-> B2; C5 -.-> B3; C5 -.-> B4; C5 -.-> C1; C5 -.-> C2; C5 -.-> C3; C5 -.-> C4;
+    C6 -.-> B1; C6 -.-> B2; C6 -.-> B3; C6 -.-> B4; C6 -.-> C1; C6 -.-> C2; C6 -.-> C3; C6 -.-> C4;
+
+    style A fill:#007acc,stroke:#fff,stroke-width:2px,color:#fff
+    style B fill:#5cb85c,stroke:#fff,stroke-width:2px,color:#fff
+    style C fill:#f0ad4e,stroke:#fff,stroke-width:2px,color:#fff
 ```
 
 ### Why Separate Applications?
