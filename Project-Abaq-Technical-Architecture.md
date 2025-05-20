@@ -124,37 +124,30 @@ graph TD
 
 ```mermaid
 graph LR
-    User[User Browser] -->|Accesses abaq.com| StudentApp(abaq.com - Student App)
-    User -->|Accesses teacher.abaq.com| TeacherApp(teacher.abaq.com - Teacher App)
-    User -->|Accesses admin.abaq.com| AdminApp(admin.abaq.com - Admin App)
+    User[User Browser] -->|Visit abaq.com| StudentApp[Student App]
+    User -->|Visit teacher.abaq.com| TeacherApp[Teacher App]
+    User -->|Visit admin.abaq.com| AdminApp[Admin App]
 
-    subgraph "Authentication & Authorization"
-        direction LR
-        AuthApp[auth.abaq.com - Auth App]
-        APIService[Backend API Service]
+    subgraph AuthFlow
+        AuthApp[Auth App]
+        API[API Service]
     end
 
     StudentApp -->|Unauthenticated| AuthApp
     TeacherApp -->|Unauthenticated| AuthApp
     AdminApp -->|Unauthenticated| AuthApp
 
-    AuthApp -->|1. Login or Signup Request| APIService
-    APIService -->|2. Issues Token and Role| AuthApp
-    AuthApp -->|3. Sets Cookie for .abaq.com| User
-    User -->|4. Redirect to Role-Specific App| StudentApp
-    User -->|4. Redirect to Role-Specific App| TeacherApp
-    User -->|4. Redirect to Role-Specific App| AdminApp
+    AuthApp -->|Login/Signup| API
+    API -->|Token & Role| AuthApp
+    AuthApp -->|Set Cookie| User
 
-    StudentApp -->|Authenticated API Calls with Token| APIService
-    TeacherApp -->|Authenticated API Calls with Token| APIService
-    AdminApp -->|Authenticated API Calls with Token| APIService
+    User -->|Redirect to App| StudentApp
+    User -->|Redirect to App| TeacherApp
+    User -->|Redirect to App| AdminApp
 
-    style User fill:#f9f,stroke:#333,stroke-width:2px,color:#000
-    style AuthApp fill:#bbf,stroke:#333,stroke-width:2px,color:#000
-    style StudentApp fill:#9f9,stroke:#333,stroke-width:2px,color:#000
-    style TeacherApp fill:#9ff,stroke:#333,stroke-width:2px,color:#000
-    style AdminApp fill:#ff9,stroke:#333,stroke-width:2px,color:#000
-    style APIService fill:#ddd,stroke:#333,stroke-width:2px,color:#000
+    StudentApp -->|API Calls| API
+    TeacherApp -->|API Calls| API
+    AdminApp -->|API Calls| API
 ```
 
 ---
